@@ -1,5 +1,6 @@
 let ccButton = document.getElementById("changeColor");
 let newButton = document.getElementById("newColor");
+let tabCount = document.getElementById("tab-count");
 
 chrome.storage.sync.get("color", ({ color }) => {
   ccButton.style.backgroundColor = color;
@@ -19,4 +20,5 @@ async function clickHandler(evt) {
   //console.log("In click listener",evt.x, evt.y, evt.target.id);
   let tabs = await chrome.tabs.query({});
   console.log("tabs =", tabs);
+  tabCount.innerHTML = "You have " + tabs.length + " tabs currently open.";
 }
