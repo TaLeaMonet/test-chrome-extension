@@ -39,4 +39,17 @@ async function clickHandler(evt) {
       //console.log("There are a total of " + windows.length + " windows currently open.");
     });
   }
+  if(evt.target.id === "changeColor") {
+    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      function: setPageBackgroundColor,
+    });
+  }
+}
+
+function setPageBackgroundColor() {
+  chrome.storage.sync.get("color", ({ color }) => {
+      document.body.style.backgroundColor = color;
+  });
 }
