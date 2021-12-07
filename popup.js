@@ -8,11 +8,10 @@ chrome.storage.sync.get("color", ({ color }) => {
   ccButton.style.backgroundColor = color;
 });
 
-
 ccButton.addEventListener("click", clickHandler);
-
 tabButton.addEventListener("click", clickHandler);
 windowButton.addEventListener("click", clickHandler);
+
 async function clickHandler(evt) {
   // if(evt.x < 35){
   //   console.log("click registered on the left half of", evt.target.id);
